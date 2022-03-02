@@ -1,25 +1,19 @@
 import React from 'react';
 
 import { Category, Article } from '../types';
-import {fetchingData} from '../utils/utils'
+import { fetchingData, formatter } from '../utils/utils'
 import './ProductList.css';
-
-var intlNumberFormatValues = ['de-DE', 'currency', 'EUR'];
-
-export var formatter = new Intl.NumberFormat(intlNumberFormatValues[0], {
-  style: intlNumberFormatValues[1],
-  currency: intlNumberFormatValues[2],
-});
 
 type State = {
   categories: Category[];
 };
 
-export var ArticleCard = ({ article }: { article: Article }) => {
+export const ArticleCard = ({ article }: { article: Article }) => {
   return (
     <div className={'article'}>
       <img src={article.images[0].path} />
-      <div>{article.name}</div>
+
+         <div>{article.name}</div>
       <div>{formatter.format(article.prices.regular.value / 100)}</div>
       <section role="button">Add to cart</section>
     </div>
@@ -32,11 +26,11 @@ class ArticleList extends React.Component {
   };
 
   componentDidMount() {
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     fetchingData(xhr)
     xhr.onload = () => {
       if (xhr.status === 200) {
-        var response = JSON.parse(xhr.response);
+        const response = JSON.parse(xhr.response);
 
         this.setState({ categories: response.data.categories });
       }
@@ -44,9 +38,9 @@ class ArticleList extends React.Component {
   }
 
   render() {
-    var articles = this.state.categories.map((category) => {
-      return category.categoryArticles.articles.map((article) => {
-        return <ArticleCard article={article} />;
+    const articles = this.state.categories.map((category) => {
+      return category.categoryArticles.articles.map((article,index) => {
+        return <ArticleCard key={index} article={article} />;
       });
     });
 
@@ -63,7 +57,7 @@ class ArticleList extends React.Component {
             <ul>
               {this.state.categories[0].childrenCategories.map(({ name, urlPath }) => {
                 return (
-                  <li>
+                  <li key={name}>
                     <a href={`/${urlPath}`}>{name}</a>
                   </li>
                 );
@@ -94,7 +88,7 @@ class ArticleList extends React.Component {
   }
 }
 
-var PLP = () => {
+const PLP = () => {
   return <ArticleList />;
 };
 
