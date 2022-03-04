@@ -1,95 +1,106 @@
 import React from 'react';
-
+import { useParams } from 'react-router-dom';
 import { Category, Article } from '../types';
-import { fetchingData, formatter } from '../utils/utils'
+import { fetchingData } from '../utils/utils';
 import './ProductList.css';
+import ArticleCard from '../components/ArticleCard';
 
 type State = {
-  categories: Category[];
+    categories: Category[];
 };
 
-export const ArticleCard = ({ article }: { article: Article }) => {
-  return (
-    <div className={'article'}>
-      <img src={article.images[0].path} />
+// export const ArticleCard = ({ article }: { article: Article }) => {
+//     return (
+//         <article className={'article'}>
+//             <img src={article.images[0].path} />
 
-         <div>{article.name}</div>
-      <div>{formatter.format(article.prices.regular.value / 100)}</div>
-      <section role="button">Add to cart</section>
-    </div>
-  )
-};
+//             <div>{article.name}</div>
+//             <div>{formatter.format(article.prices.regular.value / 100)}</div>
+//             <section role="button">Add to cart</section>
+//         </article>
+//     );
+// };
 
 class ArticleList extends React.Component {
-  state: State = {
-    categories: [],
-  };
+    state: State = {
+        categories: [],
+    };
 
-  componentDidMount() {
-    const xhr = new XMLHttpRequest();
-    fetchingData(xhr)
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        const response = JSON.parse(xhr.response);
+    componentDidMount() {
+        const xhr = new XMLHttpRequest();
+        fetchingData(xhr);
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.response);
 
-        this.setState({ categories: response.data.categories });
-      }
+                this.setState({ categories: response.data.categories });
+                console.log(this.state.categories);
+            }
+        };
     }
-  }
 
-  render() {
-    const articles = this.state.categories.map((category) => {
-      return category.categoryArticles.articles.map((article,index) => {
-        return <ArticleCard key={index} article={article} />;
-      });
-    });
+    render() {
+        const articles = this.state.categories.map(category => {
+            return category.categoryArticles.articles.map((article, index) => {
+                return <ArticleCard key={index} article={article} />;
+            });
+        });
 
-    return (
-      <div className={'page'}>
-        <div className={'header'}>
-          <strong>home24</strong>
-          <input placeholder={'Search'} />
-        </div>
+        return (
+            <main className={'page'}>
+                <header className={'header'}>
+                    <strong>home24</strong>
+                    <input placeholder={'Search'} />
+                </header>
 
-        <div className={'sidebar'}>
-          <h3>Kategorien</h3>
-          {this.state.categories.length ? (
-            <ul>
-              {this.state.categories[0].childrenCategories.map(({ name, urlPath }) => {
-                return (
-                  <li key={name}>
-                    <a href={`/${urlPath}`}>{name}</a>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            'Loading...'
-          )}
-        </div>
+                <aside className={'sidebar'}>
+                    <h3>Kategorien</h3>
+                    {this.state.categories.length ? (
+                        <ul>
+                            {this.state.categories[0].childrenCategories.map(
+                                ({ name, urlPath }) => {
+                                    return (
+                                        <li key={name}>
+                                            {console.log('urlPath', {
+                                                urlPath,
+                                            })}
+                                            <a href={`/${urlPath}`}>{name}</a>
+                                        </li>
+                                    );
+                                }
+                            )}
+                        </ul>
+                    ) : (
+                        'Loading...'
+                    )}
+                </aside>
 
-        <div className={'content'}>
-          {this.state.categories.length ? (
-            <h1>
-              {this.state.categories[0].name}
-              <small> ({this.state.categories[0].articleCount})</small>
-            </h1>
-          ) : (
-            'Loading...'
-          )}
-          <div className={'articles'}>{articles}</div>
-        </div>
+                <section className={'content'}>
+                    {this.state.categories.length ? (
+                        <h1>
+                            {this.state.categories[0].name}
+                            <small>
+                                {' '}
+                                ({this.state.categories[0].articleCount})
+                            </small>
+                        </h1>
+                    ) : (
+                        'Loading...'
+                    )}
+                    <article className={'articles'}>{articles}</article>
+                </section>
 
-        <div className={'footer'}>
-          Alle Preise sind in Euro (€) inkl. gesetzlicher Umsatzsteuer und Versandkosten.
-        </div>
-      </div>
-    );
-  }
+                <footer className={'footer'}>
+                    Alle Preise sind in Euro (€) inkl. gesetzlicher Umsatzsteuer
+                    und Versandkosten.
+                </footer>
+            </main>
+        );
+    }
 }
 
 const PLP = () => {
-  return <ArticleList />;
+    return <ArticleList />;
 };
 
 export default PLP;

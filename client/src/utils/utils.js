@@ -1,9 +1,10 @@
-export const fetchingData = async (xhr) => {
+export const fetchingData = async xhr => {
     xhr.open('POST', '/graphql');
     xhr.setRequestHeader('Content-Type', 'application/json');
 
-    xhr.send(JSON.stringify({
-      query: `{
+    xhr.send(
+        JSON.stringify({
+            query: `{
         categories(ids: "156126", locale: de_DE) {
           name
           articleCount
@@ -33,12 +34,13 @@ export const fetchingData = async (xhr) => {
           }
         }
       }`,
-    }));
-}
+        })
+    );
+};
 
 let intlNumberFormatValues = ['de-DE', 'currency', 'EUR'];
 
 export const formatter = new Intl.NumberFormat(intlNumberFormatValues[0], {
-  style: intlNumberFormatValues[1],
-  currency: intlNumberFormatValues[2],
+    style: intlNumberFormatValues[1],
+    currency: intlNumberFormatValues[2],
 });
