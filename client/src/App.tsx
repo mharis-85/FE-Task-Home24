@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-//import ProductList from "./pages/ProductList";
 import HomePage from './pages/Home';
-
-//type Props = {}
 
 const App: React.FC = () => {
     return (
