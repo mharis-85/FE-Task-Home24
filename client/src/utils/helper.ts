@@ -1,11 +1,7 @@
 // This file is for accesing api endpoints
 export const fetchingData = xhr => {
-    xhr.open('POST', '/graphql');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.send(
-        JSON.stringify({
-            query: `{
+    const apiUrl = '/graphql';
+    const queryString = `{
         categories(ids: "156126", locale: de_DE) {
           name
           articleCount
@@ -34,7 +30,17 @@ export const fetchingData = xhr => {
             }
           }
         }
-      }`,
-        })
-    );
+      }`;
+    try {
+        xhr.open('POST', apiUrl);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.send(
+            JSON.stringify({
+                query: queryString,
+            })
+        );
+    } catch (error) {
+        console.log('error message', error);
+    }
 };

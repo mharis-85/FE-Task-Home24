@@ -6,7 +6,7 @@ import Header from '../components/Header';
 //import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
 import { fetchingData } from '../utils/helper';
-import load from '../assets/load.gif';
+import load from '../assets/Spinner-2.gif';
 
 const Sidebar = lazy(() => import('../components/Sidebar'));
 const Articles = lazy(() => import('../components/Articles'));
@@ -23,7 +23,6 @@ const Home: React.FC = () => {
                 const response = JSON.parse(xhr.response);
 
                 setcategories(response.data.categories);
-                console.log(categories);
             }
         };
     }, []);
@@ -32,12 +31,15 @@ const Home: React.FC = () => {
         <React.Fragment>
             <main className={'page'}>
                 <Header />
-
                 <Suspense
                     fallback={
-                        <main>
-                            <img src={load} alt="Loading...." />
-                        </main>
+                        <div className="loader">
+                            <img
+                                className="loader__image"
+                                src={load}
+                                //alt="Loading..."
+                            />
+                        </div>
                     }
                 >
                     <Articles categories={categories} />

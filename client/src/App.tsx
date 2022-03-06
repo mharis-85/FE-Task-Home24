@@ -8,36 +8,7 @@ const App: React.FC = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/:kategorie" element={<HomePage />} />
-                <Route
-                    path="/:kategorie/wohnzimmermoebel/"
-                    element={<HomePage />}
-                />
-                <Route
-                    path="/:kategorie/schlafzimmermoebel/"
-                    element={<HomePage />}
-                />
-                <Route
-                    path="/:kategorie/esszimmermoebel/"
-                    element={<HomePage />}
-                />
-                <Route path="/:kategorie/bueromoebel/" element={<HomePage />} />
-
-                <Route
-                    path="/:kategorie/badezimmermoebel/"
-                    element={<HomePage />}
-                />
-                <Route
-                    path="/:kategorie/flur-und-diele/"
-                    element={<HomePage />}
-                />
-                <Route
-                    path="/:kategorie/kuechenmoebel/"
-                    element={<HomePage />}
-                />
-                <Route
-                    path="/:kategorie/kinderzimmermoebel/"
-                    element={<HomePage />}
-                />
+                <Route path="/:kategorie/*" element={<HomePage />} />
             </Routes>
         </BrowserRouter>
     );

@@ -12,7 +12,6 @@ interface Props {
 
 const ArticleCard: React.FC<Props> = (props: Props) => {
     const { article } = props;
-    //console.log('artcle', JSON.stringify(article));
     return (
         <article className={'article'}>
             <img src={article.images[0].path} />

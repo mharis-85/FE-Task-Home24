@@ -53,18 +53,16 @@
 .content {
     grid-area: content;
     grid-column: span 2;
+    min-height: 100vh;
 }
 
 .footer {
     grid-area: footer;
     background-color: #354044;
     text-align: center;
-
-    /* /* position: absolute; */
     bottom: 0px;
     width: 100%;
     right: 0;
-    /* height: 30px; */
 }
 
 .text {
@@ -113,4 +111,38 @@ a:active {
     border: 1px solid lightgray;
     cursor: pointer;
     text-align: center;
+}
+
+.paginationBttns {
+    width: 100%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.paginationBttns a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 20px;
+    border: 1px solid #f5674c;
+    color: #f5674c;
+    cursor: pointer;
+}
+
+.paginationBttns a:hover {
+    color: white;
+    background-color: hsl(10, 90%, 61%);
+}
+
+.paginationActive a {
+    color: white;
+    background-color: hsl(251, 60%, 57%);
+}
+
+.paginationDisabled a {
+    color: grey;
+    background-color: white;
+    cursor: not-allowed;
+    opacity: 40%;
 }
