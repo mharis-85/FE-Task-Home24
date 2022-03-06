@@ -1,6 +1,6 @@
 // This file is for accesing api endpoints
-const apiUrl = '/graphql';
-const queryString = `{
+export const apiUrl = '/graphql';
+export const queryString = `{
     categories(ids: "156126", locale: de_DE) {
       name
       articleCount
@@ -8,7 +8,7 @@ const queryString = `{
         name
         urlPath
       }
-      categoryArticles(first: 50) {
+      categoryArticles(first: 60) {
         articles {
           name
           variantName
@@ -30,17 +30,3 @@ const queryString = `{
       }
     }
   }`;
-export const fetchingData = xhr => {
-    try {
-        xhr.open('POST', apiUrl);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        xhr.send(
-            JSON.stringify({
-                query: queryString,
-            })
-        );
-    } catch (error) {
-        console.log('error message', error);
-    }
-};

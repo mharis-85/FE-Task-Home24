@@ -1,6 +1,6 @@
 // This file provides utility functions
 
-let intlNumberFormatValues = ['de-DE', 'currency', 'EUR'];
+const intlNumberFormatValues = ['de-DE', 'currency', 'EUR'];
 
 export const formatter = new Intl.NumberFormat(intlNumberFormatValues[0], {
     style: intlNumberFormatValues[1],

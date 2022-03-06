@@ -15,7 +15,7 @@ interface State {
 const Articles: React.FC<Props> = (props: Props) => {
     const { categories } = props;
     const [pageNumber, setPageNumber] = React.useState(0);
-    const articlesPerPage = 10;
+    const articlesPerPage = 12;
     const pagesVisited = pageNumber * articlesPerPage;
 
     const articles = categories.map(category => {
@@ -25,7 +25,7 @@ const Articles: React.FC<Props> = (props: Props) => {
                 return <ArticleCard key={index} article={article} />;
             });
     });
-    const pageCount = Math.ceil(50 / articlesPerPage);
+    const pageCount = Math.ceil(60 / articlesPerPage);
 
     const changePage = ({ selected }: State) => {
         setPageNumber(selected);
@@ -40,17 +40,19 @@ const Articles: React.FC<Props> = (props: Props) => {
                     </h1>
                 ) : null}
                 <article className={'articles'}>{articles}</article>
-                <ReactPaginate
-                    previousLabel={'Previous'}
-                    nextLabel={'Next'}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={'paginationBttns'}
-                    previousLinkClassName={'previousBttn'}
-                    nextLinkClassName={'nextBttn'}
-                    disabledClassName={'paginationDisabled'}
-                    activeClassName={'paginationActive'}
-                />
+                {articles && categories.length > 0 && (
+                    <ReactPaginate
+                        previousLabel={'Previous'}
+                        nextLabel={'Next'}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={'paginationBttns'}
+                        previousLinkClassName={'previousBttn'}
+                        nextLinkClassName={'nextBttn'}
+                        disabledClassName={'paginationDisabled'}
+                        activeClassName={'paginationActive'}
+                    />
+                )}
             </article>
         </>
     );
