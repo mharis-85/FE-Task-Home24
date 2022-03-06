@@ -34,7 +34,7 @@ const Articles: React.FC<Props> = (props: Props) => {
         <>
             <article className={'content'}>
                 {categories.length ? (
-                    <h1>
+                    <h1 className="article__name">
                         {categories[0].name}
                         <small> ({categories[0].articleCount})</small>
                     </h1>

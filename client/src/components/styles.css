@@ -3,7 +3,8 @@
     grid-area: header;
     background-color: rgb(255, 255, 255);
     /* border-bottom: 1px solid rgb(206, 204, 204); */
-    box-shadow: 0px 2px #f5674c;
+    /* box-shadow: 0px 2px #f5674c; */
+    box-shadow: 0px 1px 2px 0 rgb(0 0 0/10%);
 }
 .header__innersection {
     /* flex: 1; */
@@ -94,8 +95,44 @@ a:active {
 }
 
 .article {
-    border: 1px solid lavenderblush;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    /* box-shadow: 2px 3px 2px 1px rgb(0 0 0/10%); */
+    border-radius: 3px;
+    /* border: 1px solid lavenderblush; */
+    /* padding: 10px; */
+}
+.article__name {
+    border-bottom: 1px solid rgb(0 0 0/10%);
+    height: 35px;
+}
+
+.article__description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+.article__heading {
+    color: #9a9ea0;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 0;
+    margin-bottom: 4px;
+    width: 100%;
+}
+.article__price {
+    display: inline-block;
+    font-weight: bold;
+    padding-right: 8px;
+    color: #2c3638;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .article > * {
@@ -106,11 +143,22 @@ a:active {
 }
 
 .article > section[role='button'] {
-    padding: 0.2em;
-    background-color: lightgoldenrodyellow;
-    border: 1px solid lightgray;
+    width: 100%;
+    margin: 0.2em;
+    background-color: #f5674c;
+    /* border: 1px solid #fe6601; */
     cursor: pointer;
     text-align: center;
+    justify-content: center;
+    color: white;
+    line-height: 22px;
+    font-size: 14px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin: 10px;
+}
+.article > section[role='button']:hover {
+    opacity: 90%;
 }
 
 .paginationBttns {
@@ -132,12 +180,14 @@ a:active {
 
 .paginationBttns a:hover {
     color: white;
-    background-color: hsl(10, 90%, 61%);
+    background-color: #fe6601;
+    /* opacity: 90%; */
 }
 
 .paginationActive a {
     color: white;
-    background-color: hsl(251, 60%, 57%);
+    /* background-color: hsl(251, 60%, 57%); */
+    background-color: #1d5191;
 }
 
 .paginationDisabled a {
