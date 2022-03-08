@@ -1,7 +1,7 @@
 import React from 'react';
 //import { Article,Prices } from '../types';
-import { formatter } from '../utils/utils';
-
+import { formatter } from '../../utils/utils';
+import './styles.css';
 interface Props {
     article: {
         name: string;

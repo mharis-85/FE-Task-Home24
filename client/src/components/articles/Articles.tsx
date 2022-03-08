@@ -1,5 +1,5 @@
 import React from 'react';
-import { Category } from '../types';
+import { Category } from '../../types';
 import ArticleCard from './ArticleCard';
 //import Footer from './Footer';
 import './styles.css';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Category } from '../types';
+import { Category } from '../../types';
 import './styles.css';
 
 interface Props {
@@ -17,21 +17,13 @@ const Sidebar: React.FC<Props> = (props: Props) => {
                         ({ name, urlPath }) => {
                             return (
                                 <li key={name}>
-                                    {console.log('urlPath', {
-                                        urlPath,
-                                    })}
-                                    <a href={`/${urlPath}`}>
-                                        {/* <span className="sidebar ul li"> */}
-                                        {name}
-                                        {/* </span> */}
-                                    </a>
+                                    <a href={`/${urlPath}`}>{name}</a>
                                 </li>
                             );
                         }
                     )}
                 </ul>
-            ) : // 'Loading...'
-            null}
+            ) : null}
         </aside>
     );
 };

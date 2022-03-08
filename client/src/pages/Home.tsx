@@ -1,14 +1,14 @@
 import React, { useEffect, Suspense, lazy } from 'react';
 import './styles.css';
 import { Category } from '../types';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer';
 import { apiUrl, queryString } from '../utils/helper';
 import load from '../assets/Spinner-2.gif';
 import axios from 'axios';
 
-const Sidebar = lazy(() => import('../components/Sidebar'));
-const Articles = lazy(() => import('../components/Articles'));
+const Sidebar = lazy(() => import('../components/sidePanel/Sidebar'));
+const Articles = lazy(() => import('../components/articles/Articles'));
 
 const Home: React.FC = () => {
     const [categories, setcategories] = React.useState<Category[]>([]);
@@ -26,10 +26,8 @@ const Home: React.FC = () => {
                     },
                 }
             );
-            console.log('data', data);
             if (data.status === 200) {
                 setcategories(data.data.data.categories);
-                //console.log('categories', categories);
             }
         } catch (error) {
             console.log(error);
@@ -49,7 +47,7 @@ const Home: React.FC = () => {
                             <img
                                 className="loader__image"
                                 src={load}
-                                //alt="Loading..."
+                                alt="Loading..."
                             />
                         </div>
                     }
