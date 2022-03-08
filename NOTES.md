@@ -11,9 +11,14 @@
 
 1- This project mostly includes semantic HTML tags[aside,header,footer,article,] for better understanding of developer and browser.
 
+## CSS
+
+1- Currently i wrote simple styles.css. Didn't migrated to emotion/styled components (Css in js).
+2- For Layout responsiveness just followed Grid cs as it is. But for content i used Flexbox.
+
 ## xmlHttpRequest to Fetch/axios
 
-1- Api call is changed from xmlhttprequest to fetch Api
+1- Api call is changed from xmlhttprequest to axios Api
 
 ## Routing
 
@@ -37,8 +42,8 @@
 
 ## github: https://github.com/mharis-85/FE-Task-Home24
 
-i deployed my client app to vercel. As production build i couldn't access your proxy server endpoint. My post request returned HTTP(405):method not allowed. May what i need to do was to deploy your node(express) server too
+i deployed my client app to vercel. As production build i couldn't access your proxy server endpoint. My post request returned HTTP(405):method not allowed. May be what i need to do was to deploy your node(express) server too. which i couldn't.
 
-## Vercel Host: https://fe-taskhome24.vercel.app/
+## Vercel Client Host: https://fe-taskhome24.vercel.app/
 
 ######
