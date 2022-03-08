@@ -37,4 +37,8 @@
 
 ## github: https://github.com/mharis-85/FE-Task-Home24
 
+i deployed my client app to vercel. As production build i couldn't access your proxy server endpoint. My post request returned HTTP(405):method not allowed. May what i need to do was to deploy your node(express) server too
+
+## Vercel Host: https://fe-taskhome24.vercel.app/
+
 ######
