@@ -1,8 +1,5 @@
 import React from 'react';
 import './styles.css';
-//mport logo from '../assets/home24-logo.webp';
-
-//interface Props {}
 
 const Header: React.FC = () => {
     return (

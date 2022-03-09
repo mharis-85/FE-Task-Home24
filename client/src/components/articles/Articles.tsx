@@ -32,7 +32,7 @@ const Articles: React.FC<Props> = (props: Props) => {
     };
     return (
         <>
-            <article className={'content'}>
+            <article className={'content'} role="contentinfo">
                 {categories.length ? (
                     <h1 className="article__name">
                         {categories[0].name}

@@ -15,7 +15,7 @@ const Home: React.FC = () => {
 
     async function getdata() {
         try {
-            const data = await axios.post(
+            const result = await axios.post(
                 apiUrl,
                 {
                     query: queryString,
@@ -26,8 +26,8 @@ const Home: React.FC = () => {
                     },
                 }
             );
-            if (data.status === 200) {
-                setcategories(data.data.data.categories);
+            if (result.status === 200) {
+                setcategories(result.data.data.categories);
             }
         } catch (error) {
             console.log(error);

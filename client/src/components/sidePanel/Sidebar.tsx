@@ -17,7 +17,9 @@ const Sidebar: React.FC<Props> = (props: Props) => {
                         ({ name, urlPath }) => {
                             return (
                                 <li key={name}>
-                                    <a href={`/${urlPath}`}>{name}</a>
+                                    <a role="navigation" href={`/${urlPath}`}>
+                                        {name}
+                                    </a>
                                 </li>
                             );
                         }
